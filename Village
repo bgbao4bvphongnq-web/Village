@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Audio Player Pro</title>
+
+<style>
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+}
+
+.player {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background: #ff0000;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px red;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 25px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid white;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="player">
+  <h2>🎧 Play Audio</h2>
+  
+  <button onclick="toggleAudio()"></button>
+  
+  <audio id="audio">
+    <source src="Minecraft Villager__recording_vocals.wav" type="audio/wav">
+  </audio>
+</div>
+
+<script>
+let audio = document.getElementById("audio");
+let playing = false;
+
+function toggleAudio() {
+  if (!playing) {
+    audio.play();
+    playing = true;
+  } else {
+    audio.pause();
+    playing = false;
+  }
+}
+</script>
+
+</body>
+</html>
